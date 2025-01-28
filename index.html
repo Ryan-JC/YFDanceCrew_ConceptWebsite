@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YF Dance Crew</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 text-gray-800">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-10">
+      <div class="container mx-auto flex justify-between items-center p-4">
+        <h1 class="text-2xl font-bold">YF Dance Crew</h1>
+        <nav>
+          <ul class="flex gap-6">
+            <li><a href="#about" class="hover:text-blue-600">About</a></li>
+            <li><a href="#events" class="hover:text-blue-600">Events</a></li>
+            <li>
+              <a href="#team" class="hover:text-blue-600">Executive Team</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Title Screen -->
+    <section
+      class="bg-black text-white h-screen flex flex-col items-center justify-center"
+    >
+      <video
+        autoplay
+        muted
+        loop
+        class="w-full h-full object-cover absolute z-0"
+      >
+        <source src="assets/title-video.mp4" type="video/mp4" />
+      </video>
+      <div class="relative z-10 text-center">
+        <h2 class="text-4xl font-bold mb-4">Welcome to YF Dance Crew</h2>
+        <p class="text-lg mb-6">Where passion meets movement</p>
+        <button
+          class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
+        >
+          Join Us
+        </button>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-100">
+      <div class="container mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-6">What We Do</h2>
+        <p class="text-lg leading-7 max-w-2xl mx-auto">
+          YF Dance Crew is a passionate group of dancers who thrive on
+          creativity, performance, and community. We participate in local and
+          national dance events, host workshops, and bring joy to the art of
+          movement.
+        </p>
+      </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="py-16 bg-white">
+      <div class="container mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-6">Events</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Example Event -->
+          <div class="bg-gray-200 p-6 rounded shadow">
+            <h3 class="text-xl font-bold mb-2">Local Dance Showcase</h3>
+            <p>Join us as we perform at the annual community dance event.</p>
+          </div>
+          <!-- Add more events as needed -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Executive Team Section -->
+    <section id="team" class="py-16 bg-gray-100">
+      <div class="container mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-6">Executive Team</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Example Team Member -->
+          <div class="bg-white p-6 rounded shadow text-center">
+            <img
+              src="assets/member1.jpg"
+              alt="Team Member"
+              class="w-32 h-32 mx-auto rounded-full mb-4"
+            />
+            <h3 class="text-xl font-bold">John Doe</h3>
+            <p>President</p>
+          </div>
+          <!-- Add more members as needed -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4">
+      <div class="container mx-auto text-center">
+        <p>&copy; 2025 YF Dance Crew. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
