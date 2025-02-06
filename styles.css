@@ -1,75 +1,86 @@
+:root {
+  --primary: #C89DD1; /* Lavender */
+  --secondary: #F4A76E; /* Peach */
+  --accent: #87CFF0; /* Sky Blue */
+  --highlight: #F9E79F; /* Soft Yellow */
+  --background: #F7C6D9; /* Light Pink */
+  --text-primary: #3D3D3D; /* Dark Gray for readability */
+  --text-secondary: #777; /* Soft Gray */
+}
+
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  
-  body {
-    font-family: 'Open Sans', sans-serif;
-    background: url("assets/DanceRoom.jpg") no-repeat center center;
-    background-size: cover;
-    color: #333;
-  }
-  
-  h1, h2, h3, .dance-club-logo {
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  /* YF Dance Crew Logo */
-  .dance-club-logo {
-    position: absolute;
-    left: 20px;
-  }
-  
-  /* CURVED NAVBAR */
-  .curved-navbar {
-    background-color: #fff;
-    width: 80%;
-    max-width: 1000px;
-    margin: 20px auto;
-    padding: 20px;
-    translate: 0px -20px;
-    border-bottom-left-radius: 40px; /* Curve bottom-left corner */
-    border-bottom-right-radius: 40px; /* Curve bottom-right corner */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* NAV MENU */
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 120px;
-  }
-  
-  nav ul li a {
-    text-decoration: none;
-    color: #333;
-    font-size: 18px;
-    font-weight: 1000;
-    transition: color 0.3s ease;
-  }
-  
-  nav ul li a:hover {
-    color: #ff6600; /* Example hover color */
-  }
-  
-  /* MAIN CONTENT:
-       Add top margin so the content doesn't overlap the navbar. */
-  main {
-    margin-top: 80px;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  section {
-    background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
-    margin: 20px auto;
-    padding: 30px;
-    border-radius: 10px;
-    max-width: 800px;
-  }
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: url("assets/DanceRoom.jpg") no-repeat center center;
+  background-size: cover;
+  color: var(--text-primary);
+}
+
+h1,
+h2,
+h3,
+.dance-club-logo {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* YF Dance Crew Logo */
+.dance-club-logo {
+  position: absolute;
+  left: 20px;
+}
+
+/* CURVED NAVBAR */
+.curved-navbar {
+  background-color: #fff;
+  width: 80%;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  translate: 0px -20px;
+  border-bottom-left-radius: 40px; /* Curve bottom-left corner */
+  border-bottom-right-radius: 40px; /* Curve bottom-right corner */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* NAV MENU */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 120px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 1000;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: var(--primary); /* Example hover color */
+}
+
+/* MAIN CONTENT */
+main {
+  margin-top: 80px;
+  padding: 20px;
+  text-align: center;
+}
+
+section {
+  background-color: var(--background);
+  margin: 20px auto;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 800px;
+}
