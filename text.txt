@@ -1,0 +1,151 @@
+HTML:
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YF Dance Crew</title>
+    <link rel="icon" href="../assets/YFDanceCrewLogoNoBG.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"/>
+  </head>
+  <body>
+    <!-- LOGO -->
+    <img
+      src="../assets/YFDanceCrewLogoNoBG.png"
+      alt="Dance Club Logo"
+      class="dance-club-logo"
+      width="75"
+      height="75"
+    />
+
+    <!-- CURVED NAVBAR -->
+    <div class="curved-navbar">
+      <nav>
+        <ul>
+          <li><a href="#home"><b>Home</b></a></li>
+          <li><a href="#team"><b>Team</b></a></li>
+          <li><a href="#social"><b>Socials</b>></a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <section id="home">
+        <h2>Welcome to the Dance Club</h2>
+        <p>We love to dance!</p>
+      </section>
+      <section id="team">
+        <h2>Our Team</h2>
+        <p>Meet our amazing dancers and choreographers.</p>
+      </section>
+      <section id="social">
+        <h2>Follow Us</h2>
+        <p>Stay updated on our latest performances and events.</p>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
+Script:
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('School Dance Club website loaded successfully!');
+  
+    // Example: Scroll smoothly to sections when clicking nav links
+    const navLinks = document.querySelectorAll('nav ul li a');
+  
+    navLinks.forEach(link => {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+  
+        if (targetSection) {
+          window.scrollTo({
+            top: targetSection.offsetTop - 20,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+});
+
+Style:
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: url("../assets/dance-studio.jpg") no-repeat center center;
+  background-size: cover;
+  color: #333;
+}
+
+h1, h2, h3, .dance-club-logo {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* YF Dance Crew Logo */
+.dance-club-logo {
+  position: absolute;
+  left: 20px;
+}
+
+/* CURVED NAVBAR */
+.curved-navbar {
+  background-color: #fff;
+  width: 80%;
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  translate: 0px -20px;
+  border-bottom-left-radius: 40px; /* Curve bottom-left corner */
+  border-bottom-right-radius: 40px; /* Curve bottom-right corner */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* NAV MENU */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 120px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+  font-weight: 1000;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+  color: #ff6600; /* Example hover color */
+}
+
+/* MAIN CONTENT:
+     Add top margin so the content doesn't overlap the navbar. */
+main {
+  margin-top: 80px;
+  padding: 20px;
+  text-align: center;
+}
+
+section {
+  background-color: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+  margin: 20px auto;
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 800px;
+}
