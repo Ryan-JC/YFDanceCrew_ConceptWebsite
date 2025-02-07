@@ -12,48 +12,57 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- LOGO -->
-    <img
-      src="assets/YFDanceCrewLogoNoBG.png"
-      alt="Dance Club Logo"
-      class="dance-club-logo"
-      width="75"
-      height="75"
-    />
+    <header class="title-section">
+      <!-- LOGO -->
+      <img
+        src="assets/YFDanceCrewLogoNoBG.png"
+        alt="Dance Club Logo"
+        class="dance-club-logo"
+        width="100"
+        height="100"
+      />
 
-    <!-- CURVED NAVBAR -->
-    <div class="curved-navbar">
-      <nav>
-        <ul>
-          <li>
-            <a href="#home"><b>Home</b></a>
-          </li>
-          <li>
-            <a href="#team"><b>Team</b></a>
-          </li>
-          <li>
-            <a href="#social"><b>Socials</b></a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+      <!-- NAV BAR -->
+      <div class="navbar">
+        <nav>
+          <ul>
+            <li>
+              <a href="#home"><b>Home</b></a>
+            </li>
+            <li>
+              <a href="#about"><b>About</b></a>
+            </li>
+            <li>
+              <a href="#team"><b>Team</b></a>
+            </li>
+            <li>
+              <a href="#social"><b>Socials</b></a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- TITLE -->
+      <div class="club-title">
+        <h1 class="title-line-1">YF DANCE</h1>
+        <h1 class="title-line-2">CREW</h1>
+      </div>
+
+      <!-- SCROLL INDICATOR -->
+      <div class="scroll-indicator" id="scrollIndicator"></div>
+    </header>
 
     <!-- MAIN CONTENT -->
     <main>
-      <section id="home">
-        <h2>Welcome to the Dance Club</h2>
-        <p>We love to dance!</p>
-      </section>
-      <section id="team">
-        <h2>Our Team</h2>
-        <p>Meet our amazing dancers and choreographers.</p>
-      </section>
-      <section id="social">
-        <h2>Follow Us</h2>
-        <p>Stay updated on our latest performances and events.</p>
+      <section id="about" class="about-section">
+        <h2>ABOUT US</h2>
+        <p>
+          Welcome to YF Dance Crew! We are passionate about dancing and focused
+          on deveoping an engaging and fun environment.
+        </p>
       </section>
     </main>
 
-    <script src="script.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>

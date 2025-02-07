@@ -1,10 +1,11 @@
 :root {
-  --primary: #C89DD1; /* Lavender */
-  --secondary: #F4A76E; /* Peach */
-  --accent: #87CFF0; /* Sky Blue */
-  --highlight: #F9E79F; /* Soft Yellow */
-  --background: #F7C6D9; /* Light Pink */
-  --text-primary: #3D3D3D; /* Dark Gray for readability */
+  /* COLORS */
+  --primary: #c89dd1; /* Lavender */
+  --secondary: #f4a76e; /* Peach */
+  --accent: #87cff0; /* Sky Blue */
+  --highlight: #f9e79f; /* Soft Yellow */
+  --background: #f7c6d9; /* Light Pink */
+  --text-primary: #3d3d3d; /* Dark Gray for readability */
   --text-secondary: #777; /* Soft Gray */
 }
 
@@ -14,44 +15,75 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Poppins", sans-serif;
-  background: url("assets/DanceRoom.jpg") no-repeat center center;
-  background-size: cover;
-  color: var(--text-primary);
+html {
+  scroll-behavior: smooth;
 }
 
-h1,
-h2,
-h3,
-.dance-club-logo {
-  font-family: "Montserrat", sans-serif;
+body {
+  background-color: white;
+}
+
+.title-section {
+  background: url(assets/DanceRoom.jpg) no-repeat center center;
+  background-size: cover;
+  background-position: center;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: center;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+
+  font-family: "Poppins", sans-serif;
+  color: var(--text-primary);
 }
 
 /* YF Dance Crew Logo */
 .dance-club-logo {
   position: absolute;
+  top: 20px;
   left: 20px;
+  z-index: 2;
 }
 
-/* CURVED NAVBAR */
-.curved-navbar {
+/* Navigation Bar*/
+.navbar {
+  position: fixed;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
   background-color: #fff;
-  width: 80%;
+  width: 40%;
   max-width: 1000px;
-  margin: 20px auto;
-  padding: 20px;
-  translate: 0px -20px;
-  border-bottom-left-radius: 40px; /* Curve bottom-left corner */
-  border-bottom-right-radius: 40px; /* Curve bottom-right corner */
+  padding: 20px 30px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* NAV MENU */
+.navbar.hidden {
+  opacity: 0;
+  transform: translate(-50%, -20px); /* Moves up slightly */
+  pointer-events: none; /* Prevents interaction */
+}
+
+.navbar-hover-area {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px; /* Slightly bigger than nav bar*/
+  z-index: 999;
+}
+
+/* NAV BAR SETTINGS */
 nav ul {
   list-style: none;
   display: flex;
@@ -70,17 +102,128 @@ nav ul li a:hover {
   color: var(--primary); /* Example hover color */
 }
 
+/* CLUB NAME */
+.club-title {
+  position: absolute;
+  top: 55%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+}
+
+.title-line-1,
+.title-line-2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 7rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.title-line-1 {
+  color: white;
+}
+
+.title-line-2 {
+  color: var(--primary);
+  margin-top: -10px;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 20px; /* Distance from the bottom */
+  left: 50%;
+  transform: translateX(-50%); /* Centers horizontally */
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  animation: bounce 1.5s infinite;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.scroll-indicator::before {
+  content: "↓"; /* Arrow icon */
+  font-size: 24px;
+  color: #333;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(10px);
+  }
+}
+
+
 /* MAIN CONTENT */
-main {
-  margin-top: 80px;
-  padding: 20px;
+.about-section {
+  background-color: var(--primary); /* Keep it clean and readable */
+  color: white;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
-section {
-  background-color: var(--background);
-  margin: 20px auto;
-  padding: 30px;
-  border-radius: 10px;
-  max-width: 800px;
+/* RESPONSIVE ADJUSTMENTS */
+
+/* TABLET */
+@media (max-width: 768px) {
+  .navbar {
+    width: 80%;
+    padding: 15px;
+  }
+
+  nav ul {
+    gap: 40px; /* Reduce spacing */
+  }
+
+  nav ul li a {
+    font-size: 16px;
+  }
+
+  .club-title {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .navbar {
+    width: 100%;
+    padding: 15px;
+    border-radius: 0; /* Remove rounded corners for a clean mobile look */
+  }
+
+  nav ul {
+    flex-direction: column; /* Stack links vertically */
+    gap: 15px;
+    text-align: center;
+  }
+
+  nav ul li {
+    width: 100%;
+  }
+
+  .title-line-1,
+  .title-line-2 {
+    font-size: 3rem;
+  }
+
+  .scroll-indicator {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+  }
 }
