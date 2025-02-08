@@ -7,6 +7,15 @@
   --background: #f7c6d9; /* Light Pink */
   --text-primary: #3d3d3d; /* Dark Gray for readability */
   --text-secondary: #777; /* Soft Gray */
+
+  /* FONT SIZES */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.5rem;
+  --font-size-xl: 2rem;
+  --font-size-xxl: 5rem;
+  --font-size-xxxl: 6rem;
 }
 
 * {
@@ -20,11 +29,32 @@ html {
 }
 
 body {
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hidden {
+  opacity: 0;
+  filter: blur(5px);
+  transform: translateX(-100%);
+  transition: all 3s;
+}
+
+.show {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateX(0);
+}
+
+.title-section,
+.about-section {
+  opacity: 1 !important;
+  filter: none !important;
+  transform: none !important;
 }
 
 .title-section {
-  background: url(assets/DanceRoom.jpg) no-repeat center center;
+  background: url(assets/dance-studio.jpg) no-repeat center center;
+  background-color: transparent;
   background-size: cover;
   background-position: center;
 
@@ -40,11 +70,19 @@ body {
   color: var(--text-primary);
 }
 
-/* YF Dance Crew Logo */
-.dance-club-logo {
+.title-section::before {
+  content: "";
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Adjust transparency (0.5 = 50% opacity) */
+  z-index: 1;
+}
+
+.title-section * {
+  position: relative;
   z-index: 2;
 }
 
@@ -55,7 +93,9 @@ body {
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
-  background-color: #fff;
+  background: rgba(255, 255, 255, 0.7); /* 70% opaque white */
+  backdrop-filter: blur(10px); /* Adds blur effect */
+  transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease;
   width: 40%;
   max-width: 1000px;
   padding: 20px 30px;
@@ -65,7 +105,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .navbar.hidden {
@@ -93,7 +132,7 @@ nav ul {
 nav ul li a {
   text-decoration: none;
   color: var(--text-primary);
-  font-size: 18px;
+  font-size: var(--font-size-md);
   font-weight: 1000;
   transition: color 0.3s ease;
 }
@@ -154,7 +193,8 @@ nav ul li a:hover {
 }
 
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateX(-50%) translateY(0);
   }
   50% {
@@ -162,20 +202,138 @@ nav ul li a:hover {
   }
 }
 
-
 /* MAIN CONTENT */
 .about-section {
-  background-color: var(--primary); /* Keep it clean and readable */
-  color: white;
+  position: relative;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  text-align: left;
+  padding: 0 5vw;
+  gap: 2rem; /* Space between text and image */
+  background: url("assets/DanceRoom.jpg") no-repeat center center;
+  background-size: cover;
+  color: white;
+}
+
+.about-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Adjust darkness */
+  z-index: 1;
+}
+
+.about-content {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  width: 100%;
+  gap: 10rem;
+}
+
+.about-image {
+  width: 500px;
+  height: 350px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  background: url("assets/YFDANCECREW1.JPG") no-repeat center center;
+  background-size: cover;
+  overflow: hidden; /* Ensures the image stays within the box */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-text {
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-text h2 {
+  font-size: var(--font-size-xxl);
+  margin-bottom: 1rem;
+}
+
+.about-text p {
+  font-size: var(--font-size-lg);
+}
+
+.sidebar {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 15px 10px;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  width: 150px;
+  height: 60vh; /* Set a height to enable scrolling */
+  overflow-y: auto; /* Enables vertical scrolling */
+}
+
+/* Custom Scrollbar */
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
+}
+
+/* Sidebar List */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin: 10px 0;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: var(--font-size-md);
+  font-weight: bold;
+  transition: color 0.3s ease, background 0.3s ease;
+  display: block;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.sidebar ul li a:hover {
+  background: var(--primary);
+  color: white;
 }
 
 /* RESPONSIVE ADJUSTMENTS */
-
 /* TABLET */
 @media (max-width: 768px) {
   .navbar {
@@ -184,7 +342,7 @@ nav ul li a:hover {
   }
 
   nav ul {
-    gap: 40px; /* Reduce spacing */
+    gap: 40px;
   }
 
   nav ul li a {
@@ -195,6 +353,20 @@ nav ul li a:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  .about-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-image {
+    width: 80%;
+    height: auto;
+  }
+
+  .about-text {
+    max-width: 90%;
   }
 }
 
