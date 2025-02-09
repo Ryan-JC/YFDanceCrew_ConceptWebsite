@@ -12,28 +12,29 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- SIDE BAR -->
+    <!-- SIDE BAR (SCROLL NAVIGATION) -->
     <div class="sidebar">
-      <ul>
-        <li><a href="#home">Home!!!</a></li>
-        <li><a href="#team">Team</a></li>
-        <li><a href="#social">Socials</a></li>
+      <div class="progress-bar"></div>
+      <!-- Progress Indicator -->
+      <ul id="dynamic-sections">
+        <!-- Sections will be added dynamically -->
       </ul>
     </div>
+
     <!-- TITLE SECTION -->
-    <header class="title-section">
+    <header class="title-section" id="home">
       <!-- NAV BAR -->
       <div class="navbar">
         <nav>
           <ul>
             <li>
-              <a href="#home"><b>Home</b></a>
+              <a href="index.html"><b>Home</b></a>
             </li>
             <li>
-              <a href="#team"><b>Team</b></a>
+              <a href="team.html"><b>Team</b></a>
             </li>
             <li>
-              <a href="#social"><b>Socials</b></a>
+              <a href="social.html"><b>Socials</b></a>
             </li>
           </ul>
         </nav>
@@ -52,10 +53,10 @@
     <!-- MAIN CONTENT -->
     <main>
       <!-- ABOUT US -->
-      <section class="about-section">
+      <section class="about-section" id="about">
         <div class="about-content hidden">
           <div class="about-image">
-            <img src="assets/YFDANCECREW1.JPG" alt="About Us">
+            <img src="assets/YFDANCECREW1.JPG" alt="About Us" />
           </div>
           <div class="about-text">
             <h2>ABOUT US</h2>
@@ -63,6 +64,63 @@
               Welcome to YF Dance Crew! We are passionate about dancing and
               focused on deveoping an engaging and fun environment.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- EVENTS -->
+      <section class="event-section" id="events">
+        <h2 class="event-header">EVENTS</h2>
+        <div class="event-content hidden">
+          <!-- WINTER WONDERLAND -->
+          <div class="event-item">
+            <div class="event-title">
+              <h2>WINTER WONDERLAND</h2>
+            </div>
+            <div class="event-box">
+              <div class="event-card">
+                <div class="event-front">
+                  <img src="assets/winterwonderland.JPG" />
+                </div>
+                <div class="event-back">
+                  <p>Lorem ipsum</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STEP OUT -->
+          <div class="event-item">
+            <div class="event-title">
+              <h2>STEP OUT COMPETITION</h2>
+            </div>
+            <div class="event-box">
+              <div class="event-card">
+                <div class="event-front">
+                  <img src="assets/competition.JPG" />
+                </div>
+                <div class="event-back">
+                  <p>Lorem ipsum</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- BIRTHDAY BASH -->
+          <div class="event-item">
+            <div class="event-title">
+              <h2>BIRTHDAY BASH</h2>
+            </div>
+            <div class="event-box">
+              <div class="event-card">
+                <div class="event-front">
+                  <img src="assets/bdaybash.JPG" />
+                </div>
+                <div class="event-back">
+                  <p>Lorem ipsum</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   console.log("School Dance Club website loaded successfully!");
 
-
   // SHORTCUTS
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
@@ -16,10 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
   scrollIndicator.addEventListener("click", () => {
     window.scrollTo({
       top: window.innerHeight,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   });
-
 
   // POP-UP NAV BAR AFTER TITLE SECTION
   const navbar = document.querySelector(".navbar");
@@ -71,13 +69,53 @@ document.addEventListener("DOMContentLoaded", function () {
     entries.forEach((entry) => {
       console.log(entry);
       if (entry.isIntersecting) {
-        entry.target.classList.add('show');
+        entry.target.classList.add("show");
       } else {
-        entry.target.classList.remove('show');
+        entry.target.classList.remove("show");
       }
     });
   });
 
-  const hiddenElements = document.querySelectorAll('.about-content.hidden');
+  const hiddenElements = document.querySelectorAll(
+    ".about-content.hidden, .event-content.hidden"
+  );
   hiddenElements.forEach((el) => observer.observe(el));
+
+  // PROGRESSION BAR
+  const progressBar = document.querySelector(".progress-bar");
+  const sidebarList = document.getElementById("dynamic-sections");
+
+  // Define sections dynamically from the page content
+  const sections = Array.from(document.querySelectorAll("section[id]"))
+    .filter((section) => section.id !== "home") // Remove home if needed
+    .map((section) => ({
+      id: section.id,
+      name: section.querySelector("h2")?.textContent || section.id,
+    }));
+
+  // Add Home manually as first item
+  sections.unshift({
+    id: "home",
+    name: "HOME",
+  });
+
+  // Populate the sidebar with shortcuts
+  sections.forEach((section) => {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    a.href = `#${section.id}`;
+    a.textContent = section.name;
+    li.appendChild(a);
+    sidebarList.appendChild(li);
+  });
+
+  function updateProgressBar() {
+    const scrollTop = window.scrollY;
+    const docHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    progressBar.style.height = scrollPercent + "%";
+  }
+
+  window.addEventListener("scroll", updateProgressBar);
 });
