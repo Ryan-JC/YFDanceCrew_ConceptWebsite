@@ -32,6 +32,10 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 .hidden {
   opacity: 0;
   filter: blur(5px);
@@ -53,38 +57,50 @@ body {
   transform: none !important;
 }
 
-.title-section {
-  background: url(assets/dance-studio.jpg) no-repeat center center;
-  background-color: transparent;
-  background-size: cover;
-  background-position: center;
+/* PROGRESS BAR */
+.progress-bar {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 60vh;
+  background: var(--primary);
+  border-radius: 10px;
+  transition: height 0.3s ease-in-out;
+  z-index: 1000;
+}
 
-  min-height: 100vh;
+/* SHORTCUT BUTTONS */
+.shortcut-buttons {
+  position: fixed;
+  right: 0.25rem;
+  top: 50%;
+  transform: translateY(-50%) translateX(100%);
   display: flex;
-  flex-direction: center;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-
-  font-family: "Poppins", sans-serif;
-  color: var(--text-primary);
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease-in-out;
+  z-index: 1001;
 }
 
-.title-section::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Adjust transparency (0.5 = 50% opacity) */
-  z-index: 1;
+.shortcut-buttons.show {
+  transform: translateX(0);
+  opacity: 1;
+  transition-delay: calc(var(--index) * 50ms); /* Stagger effect */
 }
 
-.title-section * {
-  position: relative;
-  z-index: 2;
+.shortcut-buttons.show a {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: var(--font-size-md);
+  min-width: 150px;
+  transform: translateX(20px); /* Initial hidden state */
+  opacity: 0;
+  transition: all 0.3s ease;
 }
 
 /* Navigation Bar*/
@@ -128,6 +144,7 @@ nav ul {
   list-style: none;
   display: flex;
   gap: 120px;
+  font-family: "Montserrat";
 }
 
 nav ul li a {
@@ -142,8 +159,42 @@ nav ul li a:hover {
   color: var(--primary);
 }
 
-/* CLUB NAME */
-.club-title {
+.title-section {
+  background: url(assets/dance-studio.jpg) no-repeat center center;
+  background-color: transparent;
+  background-size: cover;
+  background-position: center;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: center;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+
+  font-family: "Poppins", sans-serif;
+  color: var(--text-primary);
+}
+
+.title-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Adjust transparency (0.5 = 50% opacity) */
+  z-index: 1;
+}
+
+.title-section * {
+  position: relative;
+  z-index: 2;
+}
+
+/* page NAME */
+.page-title {
   position: absolute;
   top: 50%;
   left: 20%;
@@ -170,39 +221,6 @@ nav ul li a:hover {
   margin-top: -10px;
 }
 
-.scroll-indicator {
-  position: absolute;
-  bottom: 20px; /* Distance from the bottom */
-  left: 50%;
-  transform: translateX(-50%); /* Centers horizontally */
-  width: 40px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  animation: bounce 1.5s infinite;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.scroll-indicator::before {
-  content: "↓"; /* Arrow icon */
-  font-size: 24px;
-  color: #333;
-}
-
-@keyframes bounce {
-  0%,
-  100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  50% {
-    transform: translateX(-50%) translateY(10px);
-  }
-}
-
 /* ABOUT SECTION */
 .about-section {
   position: relative;
@@ -216,7 +234,7 @@ nav ul li a:hover {
   background: url("assets/dance-studio.jpg") no-repeat center center;
   background-size: cover;
   color: white;
-  font-family: "Montserrat"
+  font-family: "Montserrat";
 }
 
 .about-section::before {
@@ -277,7 +295,7 @@ nav ul li a:hover {
 /* EVENT SECTION */
 .event-section {
   position: relative;
-  height: 100vh;
+  height: 120vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -356,7 +374,8 @@ nav ul li a:hover {
   transform: rotateY(180deg);
 }
 
-.event-front, .event-back {
+.event-front,
+.event-back {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -389,86 +408,125 @@ nav ul li a:hover {
   color: var(--text-primary);
 }
 
-/* SIDE BAR */
-.sidebar {
-  position: fixed;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  padding: 15px 10px;
-  border-radius: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  width: 150px;
-  height: 60vh;
-  overflow-y: auto;
-  z-index: 1000;
-}
-
-/* SIDEBAR */
-.sidebar {
-  position: fixed;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  padding: 15px 10px;
-  border-radius: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  width: 70px;
-  height: 60vh;
-  overflow: hidden;
-  transition: all 0.3s ease-in-out;
-  z-index: 1000;
+/* SOCIALS SECTION */
+.socials-section {
+  position: relative;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 5vw;
+  background: url("assets/dance-studio.jpg") no-repeat center center/cover;
+  color: white;
+  font-family: "Montserrat";
 }
 
-.sidebar:hover {
-  width: 200px;
-  padding: 15px;
-}
-
-.progress-bar {
+.socials-section::before {
+  content: "";
   position: absolute;
-  right: 0;
   top: 0;
-  width: 5px;
-  height: 0%;
-  background: var(--primary);
-  transition: height 0.2s ease-in-out;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
   z-index: 1;
 }
 
-/* Sidebar List */
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.socials-header {
+  font-size: var(--font-size-xxl);
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 5rem;
+  z-index: 2;
+  position: relative;
+}
+
+.socials-slider-container {
   width: 100%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 2rem 0;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  position: relative;
+  z-index: 3;
+}
+
+.socials-slider {
+  display: flex;
+  gap: 2rem;
+  padding: 0 calc(50% - 300px);
+  scroll-padding: 0 calc(50% - 300px);
+  scroll-snap-type: x mandatory;
+  min-height: 500px;
+}
+
+.socials-slider::before,
+.socials-slider::after {
+  content: "";
+  flex: 0 0 calc(50% - 300px); /* Create spacing buffers */
+}
+
+.social-card:first-child,
+.social-card:last-child {
+  margin: 0;
+}
+
+.social-card {
+  flex: 0 0 600px;
+  scroll-snap-align: center;
+  border-radius: 15px;
+  padding: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.instagram-video {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+.video-caption {
+  color: #f4f4f4;
+  font: "Montserrat";
+  font-size: var(--font-size-md);
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+/* INSTAGRAM BUTTON */
+.instagram-cta {
+  text-align: center;
+  margin-top: 3rem;
   position: relative;
   z-index: 2;
 }
 
-.sidebar ul li a {
+.instagram-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 1rem 2rem;
+  background: white;
+  color: black !important;
+  border-radius: 30px;
   text-decoration: none;
-  color: var(--text-primary);
-  font-size: var(--font-size-md);
-  font-weight: bold;
-  transition: all 0.3s ease;
-  display: block;
-  padding: 10px;
-  opacity: 0;
-  transform: translateX(100%);
-  transition: all 0.3s ease-in-out;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.sidebar:hover ul li a {
-  opacity: 1;
-  transform: translateX(0);
+.instagram-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.instagram-button i {
+  font-size: 1.5rem;
 }
 
 /* RESPONSIVE ADJUSTMENTS */

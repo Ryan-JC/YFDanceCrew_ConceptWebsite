@@ -9,45 +9,37 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&family=Poppins:wght@300;400;600&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- SIDE BAR (SCROLL NAVIGATION) -->
-    <div class="sidebar">
-      <div class="progress-bar"></div>
-      <!-- Progress Indicator -->
-      <ul id="dynamic-sections">
-        <!-- Sections will be added dynamically -->
-      </ul>
+    <!-- PROGRESS BAR -->
+    <div class="progress-bar"></div>
+
+    <!-- NAV BAR -->
+    <div class="navbar">
+      <nav>
+        <ul>
+          <li>
+            <a href="index.html"><b>Home</b></a>
+          </li>
+          <li>
+            <a href="team.html"><b>Team</b></a>
+          </li>
+          <li>
+            <a href="faqs.html"><b>FAQs</b></a>
+          </li>
+        </ul>
+      </nav>
     </div>
 
     <!-- TITLE SECTION -->
     <header class="title-section" id="home">
-      <!-- NAV BAR -->
-      <div class="navbar">
-        <nav>
-          <ul>
-            <li>
-              <a href="index.html"><b>Home</b></a>
-            </li>
-            <li>
-              <a href="team.html"><b>Team</b></a>
-            </li>
-            <li>
-              <a href="social.html"><b>Socials</b></a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-
       <!-- TITLE -->
-      <div class="club-title">
+      <div class="page-title">
         <h1 class="title-line-1">YF DANCE</h1>
         <h1 class="title-line-2">CREW</h1>
       </div>
-
-      <!-- SCROLL INDICATOR -->
-      <div class="scroll-indicator" id="scrollIndicator"></div>
     </header>
 
     <!-- MAIN CONTENT -->
@@ -62,7 +54,13 @@
             <h2>ABOUT US</h2>
             <p>
               Welcome to YF Dance Crew! We are passionate about dancing and
-              focused on deveoping an engaging and fun environment.
+              focused on developing an engaging and fun environment. Our primary
+              genres are KPOP, Jazz and Hip-Hop.
+            </p>
+            <br />
+            <p>
+              Come join us every Monday in the Drama Room & Friday in the
+              Fitness at 12:15pm!
             </p>
           </div>
         </div>
@@ -83,7 +81,10 @@
                   <img src="assets/winterwonderland.JPG" />
                 </div>
                 <div class="event-back">
-                  <p>Lorem ipsum</p>
+                  <p>
+                    Open to all members, dance three songs onstage in front of
+                    the whole school
+                  </p>
                 </div>
               </div>
             </div>
@@ -100,7 +101,7 @@
                   <img src="assets/competition.JPG" />
                 </div>
                 <div class="event-back">
-                  <p>Lorem ipsum</p>
+                  <p>Audition-picked members compete against other schools</p>
                 </div>
               </div>
             </div>
@@ -117,11 +118,56 @@
                   <img src="assets/bdaybash.JPG" />
                 </div>
                 <div class="event-back">
-                  <p>Lorem ipsum</p>
+                  <p>
+                    Open to all dancers, dance three songs in front of the whole
+                    school
+                  </p>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- SOCIALS -->
+      <section class="socials-section" id="socials">
+        <h2 class="socials-header">SOCIALS</h2>
+        <div class="socials-slider-container">
+          <div class="socials-slider">
+            <!-- Video Card 1 -->
+            <div class="social-card">
+              <video controls class="instagram-video">
+                <source src="assets/videos/instaDTI.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p class="video-caption">Dress To Impress</p>
+            </div>
+
+            <!-- Video Card 2 -->
+            <div class="social-card">
+              <video controls class="instagram-video">
+                <source src="assets/videos/instaIGLOO.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p class="video-caption">IGLOO by KIOF</p>
+            </div>
+
+            <!-- Video Card 3 -->
+            <div class="social-card">
+              <video controls class="instagram-video">
+                <source src="assets/videos/instaTouch.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <p class="video-caption">Touch by Katseye</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="instagram-cta">
+          <a href="https://www.instagram.com/yf.dancecrew" target="_blank" rel="noopener" class="instagram-button">
+            <i class="fab fa-instagram"></i>
+            Follow us on Instagram
+          </a>
         </div>
       </section>
     </main>
